@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
-  validates :email, presence: true
-  has_one :portfolio#, dependent: :destroy
+  validates :email, :username, presence: true
+  has_many :stocks, through: :portfolios_stocks
+  has_many :portfolios_stocks
 end
