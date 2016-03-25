@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+stocks = Stock.create([{name: 'google', price: 10}, {name:'amazon' , price: 15 }, {name: 'yahoo', price: 1}, {name: 'buzzfeed', price: 2}])
+
