@@ -1,0 +1,12 @@
+<h2>My Cash</h2>
+  <p>$<%= current_user.cash %></p>
+
+<h2>My Portfolio</h2>
+  <ul>
+  <% my_portfolio.each do |item| %>
+    <li><%= item.html_safe %></li>
+  <% end %>
+  </ul>
+
+<%= render partial: "trades/new" %>
+<%= render partial: "sales/new" %>

@@ -1,0 +1,18 @@
+<h2>Make Trade</h2>
+
+<!-- refactor this non DRY wet nonsense be like the pokemon example -->
+<a href="#" id="buy">Buy!</a>
+<section id="make_trade_buy">
+  <%= form_for :trades, :url => {:action => :create, :controller => :trades} do |f| %>
+  <fieldset>
+    <legend>Purchase a stock</legend>
+      <div>
+        <% @stocks.each do |stock| %>
+          <%= f.check_box stock.name %>$<%= stock.price %>: <%= stock.name %> </br />
+        <% end %>
+        <%= f.submit 'Place order' %>
+      </div>
+  </fieldset>
+  <% end %>
+</section>
+<br />

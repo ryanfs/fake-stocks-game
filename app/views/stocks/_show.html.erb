@@ -1,0 +1,6 @@
+<h2>Stock Market</h2>
+  <ul>
+  <% @stocks.each do |stock| %>
+    <li>$<%= stock.price %> <%= stock.name %></li>
+  <% end %>
+  </ul>

@@ -1,0 +1,12 @@
+<%= form_for :session, url: login_path do |f| %>
+<fieldset>
+  <legend>Log in</legend>
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :password %>
+      <%= f.password_field :password_digest %>
+      <%= f.submit 'Log in' %>
+    </div>
+</fieldset>
+<% end %>
