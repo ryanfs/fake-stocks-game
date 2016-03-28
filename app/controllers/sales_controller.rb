@@ -7,7 +7,7 @@ class SalesController < ApplicationController
 
   def create
     # // submit this with ajax to serve errors properly
-    Trade.buy_stocks(params[:trades], current_user)
+    Sale.sell_stocks(params[:sales], current_user)
     redirect_to markets_path
   end
 

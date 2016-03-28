@@ -13,7 +13,7 @@ class Trade < ActiveRecord::Base
 
   private
 
-  def self.can_afford_stocks?(user, stocks    )
+  def self.can_afford_stocks?(user, stocks)
     stock_names = get_stocks_from_order(stocks)
     stock_objects = []
     stock_names.each do |name|

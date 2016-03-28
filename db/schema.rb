@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324141524) do
+ActiveRecord::Schema.define(version: 20160328203315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "holdings", force: true do |t|
+    t.integer  "quantity"
+    t.integer  "user_id"
+    t.integer  "stock_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "holdings", ["stock_id"], name: "index_holdings_on_stock_id", using: :btree
+  add_index "holdings", ["user_id"], name: "index_holdings_on_user_id", using: :btree
 
   create_table "markets", force: true do |t|
     t.integer  "days",       default: 1

@@ -3,12 +3,15 @@
 <!-- refactor this non DRY wet nonsense be like the pokemon example -->
 <a href="#" id="buy">Buy!</a>
 <section id="make_trade_buy">
-  <%= form_for :trades, :url => {:action => :create, :controller => :trades} do |f| %>
+  <%= form_for :holdings, :url => {:action => :create, :controller => :holdings} do |f| %>
   <fieldset>
-    <legend>Purchase a stock</legend>
+    <legend>Purchase your stocks</legend>
       <div>
         <% @stocks.each do |stock| %>
-          <%= f.check_box stock.name %>$<%= stock.price %>: <%= stock.name %> </br />
+          <%= f.label :stocks, "$#{stock.price} #{stock.name}" %>
+          <%= f.text_field stock.name, :placeholder => 'How many shares?' %></br />
+          </br />
+
         <% end %>
         <%= f.submit 'Place order' %>
       </div>

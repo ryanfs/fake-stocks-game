@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, null: false
       t.string :password_digest, null: false
       t.integer :cash, :default => 100
-      t.references :stock, index: true
 
       t.timestamps null: false
     end

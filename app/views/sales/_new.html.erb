@@ -7,7 +7,7 @@
     <legend>Sell off your stocks</legend>
       <div>
         <% my_stocks.each do |stock| %>
-          <%= f.check_box stock.name %><%= stock.name %> </br />
+          <%= f.text_field stock.name, :placeholder => 'Quantity' %><%= stock.name %> </br />
         <% end %>
         <%= f.submit 'Place order' %>
       </div>
