@@ -9,7 +9,7 @@
       <div>
         <% @stocks.each do |stock| %>
           <%= f.label :stocks, "$#{stock.price} #{stock.name}" %>
-          <%= f.text_field stock.name, :placeholder => 'How many shares?' %></br />
+          <%= f.number_field stock.name, :placeholder => 'How many shares?' %></br />
           </br />
 
         <% end %>

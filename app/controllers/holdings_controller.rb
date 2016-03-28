@@ -4,8 +4,12 @@ class HoldingsController < ApplicationController
   end
 
   def create
+    if (params.has_key?(:decision))
+      Holding.sell_stocks(params[:holdings], current_user)
+      redirect_to markets_path
+    else
     Holding.buy_stocks(params[:holdings], current_user)
-    flash[:error] = 'You do not have enough cash to make this trade! Try making smarter purchasing decisions...'
     redirect_to markets_path
+    end
   end
 end

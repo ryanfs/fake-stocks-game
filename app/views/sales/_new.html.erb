@@ -1,15 +1,17 @@
-<!-- refactor this non DRY wet nonsense be like the pokemon example -->
+<!-- refactor this non DRY wet nonsense be like the pokemon example... also refactor this (and holding model) to use stock.id not stock.name -->
 <br />
 <a href="#" id="sell">Sell!</a>
 <section id="make_trade_sell">
-  <%= form_for :sales, :url => {:action => :create, :controller => :sales} do |f| %>
+  <%= form_for :holdings, :url => {:action => :create, :controller => :holdings, :decision => :sell} do |f| %>
   <fieldset>
     <legend>Sell off your stocks</legend>
       <div>
-        <% my_stocks.each do |stock| %>
-          <%= f.text_field stock.name, :placeholder => 'Quantity' %><%= stock.name %> </br />
+        <% current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity| %>
+        <% stock = Stock.find(stock_id) %>
+
+          <%= f.number_field stock.name, :max => quantity, :min => 0, :placeholder => 'Quantity' %><%= stock.name %> (You own <%= quantity %> shares) </br />
         <% end %>
-        <%= f.submit 'Place order' %>
+        <%= f.submit 'Offload these stocks' %>
       </div>
   </fieldset>
   <% end %>

@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def my_portfolio
     if my_stocks
-      quantity = current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity|
+      current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity|
         stock = Stock.find(stock_id)
         "#{quantity} shares of #{stock.name}"
       end
