@@ -1,13 +1,8 @@
 To Do
 
-##Core
-Sell stocks
-Change the stocks when a day goes by???
-(Implement real stock api instead)
-
-##Nice to have
-Fix pluralization
-Use a real stock api
-
-##Stretch
-Refactor database to have a holdings table with a quanitity and stock id
+1. User Detail: Trade History (show in a widget)
+2. Homepage#welcome: Leaderboard, stock ticket, etc
+3. Fix pluralization on view so it doesn't say 1 shares
+4. Design it to look sweet using dashboard framework
+5. Use a real stock api
+6. Use Devise
