@@ -2,23 +2,44 @@ class Holding < ActiveRecord::Base
   belongs_to :user
   belongs_to :stock
 
+
+
   def self.buy_stocks(params, user)
     order_price = self.price_of_order(params)
     if order_price <= user.cash
       order = self.get_stocks_from_order(params)
       self.purchase_stocks(order, user, order_price)
     else
-      flash[:error] = 'You do not have enough cash to make this trade! Try making smarter purchasing decisions...'
+      false
     end
   end
 
   def self.sell_stocks(params, user)
+    if self.user_cannot_have_negative_quantities_of_stock(user, params)
+    else
+      return false
+    end
     order_price = self.price_of_order(params)
     order = self.get_stocks_from_order(params)
     self.sell(order, user, order_price)
   end
 
+  def self.user_cannot_have_negative_quantities_of_stock(user, params)
+    order = self.get_stocks_from_order(params)
+    order.each do |stock, quantity|
+      stock_id = Stock.find_by(name: stock).id
+      if quantity > self.stock_quantity(user, stock_id)
+        return false
+      end
+    end
+  end
+
   private
+
+  def self.stock_quantity(user, stock_id)
+    stock_hash = user.holdings.group(:stock_id).sum(:quantity)
+    return stock_hash[stock_id]
+  end
 
   def self.sell(stock_order, user, price)
     stock_order.each do |stock, quantity|
@@ -28,7 +49,7 @@ class Holding < ActiveRecord::Base
       if sell.save
         user.update(cash: user.cash + price)
       else
-        flash[:error] = 'Something went wrong with this order. Please try again.'
+        false
       end
     end
   end
@@ -40,7 +61,7 @@ class Holding < ActiveRecord::Base
       if buy.save
         user.update(cash: user.cash - price)
       else
-        flash[:error] = 'Something went wrong with this order. Please try again. Your account was not charged.'
+        false
       end
     end
   end
