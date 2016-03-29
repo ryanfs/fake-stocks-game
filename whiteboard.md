@@ -6,3 +6,5 @@ To Do
 4. Design it to look sweet using dashboard framework
 5. Use a real stock api
 6. Use Devise
+
+https://www.quantopian.com/algorithms/56f99425226ad8eb9900029c
