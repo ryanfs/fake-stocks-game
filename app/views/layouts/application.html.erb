@@ -7,11 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if current_user %>
+<nav>
+  <ul>
+    <li><a class="brick dashboard" href="/"><span class='icon ion-home'></span>Dashboard</a></li>
+    <li><a class="brick navigation" id="buy" href="#"><span class='icon ion-android-share-alt'></span><%= render partial: "trades/new" %></a>
+
+    </li>
+    <li><a class="brick pages" href="#"><span class='icon ion-document'></span>SELL SELL SELL</a></li>
+    <li><a class="brick users" href="#"><span class='icon ion-person'></span><%= current_user.email %></a></li>
+    <li><a class="brick settings" data-method="delete" href="/logout"><span class='icon ion-gear-a'></span>Log out</a></li>
+  </ul>
+</nav>
+<% else %>
+<% end %>
 <nav>
   <ul>
     <% if current_user %>
-    <li>You are logged in.</li>
-    <li><%= link_to "Logout", logout_path, method: :delete %></li>
     <% else %>
     <li>You are logged out.</li>
     <li><%= link_to "Sign up", new_user_path %></li>
@@ -19,6 +31,8 @@
     <% end %>
   </ul>
 </nav>
-<%= yield %>
+  <div id="content" class="pages">
+    <%= yield %>
+  </div>
 </body>
 </html>

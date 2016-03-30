@@ -10,7 +10,7 @@ class Holding < ActiveRecord::Base
       order = self.get_stocks_from_order(params)
       self.purchase_stocks(order, user, order_price)
     else
-      false
+      return false
     end
   end
 
@@ -49,7 +49,7 @@ class Holding < ActiveRecord::Base
       if sell.save
         user.update(cash: user.cash + price)
       else
-        false
+        return false
       end
     end
   end
@@ -61,7 +61,7 @@ class Holding < ActiveRecord::Base
       if buy.save
         user.update(cash: user.cash - price)
       else
-        false
+        return false
       end
     end
   end

@@ -6,4 +6,8 @@ class MarketsController < ApplicationController
     @user_holdings = current_user.holdings
   end
 
+  def example
+  end
+
+
 end

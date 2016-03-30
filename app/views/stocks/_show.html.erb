@@ -1,6 +1,27 @@
-<h2>Stock Market</h2>
-  <ul>
-  <% @stocks.each do |stock| %>
-    <li>$<%= stock.price %> <%= stock.name %></li>
-  <% end %>
-  </ul>
+<header>
+    <div class="brick identify">
+      <span class="icon ion-document"></span>
+    </div>
+
+    <div class="brick title">
+      <h2>Stock Market</h2>
+        <ul>
+          <% @stocks.each do |stock| %>
+            <li>$<%= stock.price %> <%= stock.name %></li>
+          <% end %>
+        </ul>
+    </div>
+
+<!--     <div class="brick close">
+      <span class="text"></span>
+      <span class="icon ion-close"></span>
+    </div>
+
+
+    <div class="brick save">
+      <span class="text"></span>
+      <span class="icon ion-checkmark"></span>
+    </div> -->
+
+</header>
+

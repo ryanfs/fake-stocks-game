@@ -4,15 +4,13 @@
 <section id="make_trade_sell">
   <%= form_for :holdings, :url => {:action => :create, :controller => :holdings, :decision => :sell} do |f| %>
   <fieldset>
-    <legend>Sell off your stocks</legend>
-      <div>
-        <% current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity| %>
-        <% stock = Stock.find(stock_id) %>
+    <div>
+      <% current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity| %>
+      <% stock = Stock.find(stock_id) %>
 
-          <%= f.number_field stock.name, :max => quantity, :min => 0, :placeholder => 'Quantity' %><%= stock.name %> (You own <%= quantity %> shares) </br />
-        <% end %>
-        <%= f.submit 'Offload these stocks' %>
-      </div>
-  </fieldset>
+        <%= f.number_field stock.name, :max => quantity, :min => 0, :placeholder => 'Quantity' %><%= stock.name %> (You own <%= quantity %> shares) </br />
+      <% end %>
+      <%= f.submit 'Offload these stocks' %>
+    </div>
   <% end %>
 </section>

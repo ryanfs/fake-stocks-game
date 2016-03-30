@@ -1,21 +1,15 @@
-<h2>Make Trade</h2>
-
 <!-- refactor this non DRY wet nonsense be like the pokemon example -->
-<a href="#" id="buy">Buy!</a>
+<!-- <a href="#" id="buy">Buy!</a> -->
+<span id='buy-header'>Buy stocks</span>
 <section id="make_trade_buy">
   <%= form_for :holdings, :url => {:action => :create, :controller => :holdings} do |f| %>
-  <fieldset>
-    <legend>Purchase your stocks</legend>
-      <div>
-        <% @stocks.each do |stock| %>
-          <%= f.label :stocks, "$#{stock.price} #{stock.name}" %>
-          <%= f.number_field stock.name, :placeholder => 'How many shares?' %></br />
-          </br />
-
-        <% end %>
-        <%= f.submit 'Place order' %>
-      </div>
-  </fieldset>
+   <div>
+      <% @stocks.each do |stock| %>
+        <%= "$#{stock.price} #{stock.name}" %>
+        <%= f.number_field stock.name, :placeholder => 'How many shares?' %></br />
+        </br />
+      <% end %>
+      <%= f.submit 'Place order' %>
+    </div>
   <% end %>
 </section>
-<br />

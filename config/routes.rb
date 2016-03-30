@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'example' => 'markets#example'
 
   resources :users, only: [:new, :create, :show]
   resources :markets, only: [:index]

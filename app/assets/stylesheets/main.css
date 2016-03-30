@@ -1,3 +1,10 @@
 #make_trade_sell, #make_trade_buy {
   display: none;
 }
+
+#close-buy-header {
+  display: none;
+  height: 50px;
+  width: 50px;
+  border: 1px solid red;
+}
