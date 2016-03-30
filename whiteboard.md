@@ -8,3 +8,5 @@ To Do
 6. Use Devise
 
 https://www.quantopian.com/algorithms/56f99425226ad8eb9900029c
+
+http://jslate.com/dashboards/view/31562
