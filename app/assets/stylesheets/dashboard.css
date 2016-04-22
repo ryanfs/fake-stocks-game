@@ -1,3 +1,5 @@
+
+/*
 html {
   box-sizing: border-box;
 }
@@ -146,11 +148,11 @@ nav ul li a.users .icon{
 }
 
 nav ul li a.settings{
-  /*border-color: #34ABD7;*/
+  border-color: #34ABD7;
 }
 
 nav ul li a.settings .icon{
-  /*background-color: #34ABD7;*/
+  background-color: #34ABD7;
 }
 
 #content > header{

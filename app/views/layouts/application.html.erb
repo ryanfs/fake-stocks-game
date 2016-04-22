@@ -3,34 +3,35 @@
 <head>
   <title>FakeStocks</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 <% if current_user %>
-<nav>
+<!--<nav>
   <ul>
     <li><a class="brick dashboard" href="/"><span class='icon ion-home'></span>Dashboard</a></li>
-    <li><a class="brick navigation" id="buy" href="#"><span class='icon ion-android-share-alt'></span><%= render partial: "trades/new" %></a>
-
+  <li><a class="brick navigation" id="buy" href="#"><span class='icon ion-android-share-alt'></span>#</a>
     </li>
     <li><a class="brick pages" href="#"><span class='icon ion-document'></span>SELL SELL SELL</a></li>
     <li><a class="brick users" href="#"><span class='icon ion-person'></span><%= current_user.email %></a></li>
     <li><a class="brick settings" data-method="delete" href="/logout"><span class='icon ion-gear-a'></span>Log out</a></li>
   </ul>
-</nav>
+</nav>-->
 <% else %>
 <% end %>
-<nav>
+<!-- <nav>
   <ul>
     <% if current_user %>
     <% else %>
     <li>You are logged out.</li>
-    <li><%= link_to "Sign up", new_user_path %></li>
-    <li><%= link_to "Log in", login_path %></li>
+
     <% end %>
   </ul>
-</nav>
+</nav> -->
   <div id="content" class="pages">
     <%= yield %>
   </div>

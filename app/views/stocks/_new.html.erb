@@ -1,0 +1,12 @@
+<section id="create_stock">
+  <h3>Don't see the stock you want?</h3>
+  <h4>Enter the stock symbol to start tracking it.</h4>
+  <%= form_for @stock, :url => {:action => :create, :controller => :stocks} do |f| %>
+   <div>
+      <%= "Stock Symbol" %><br />
+      <%= f.text_field :name, placeholder: "GOOG"  %>
+      <br />
+      <%= f.submit 'Create stock' %>
+    </div>
+  <% end %>
+</section>
