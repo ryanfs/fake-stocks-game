@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
         user.password = Devise.friendly_token[0,20]
       end
   end
+
+  def self.leaderboard
+    # look at every user, add up the value of their portfolio + cash holdings, return them in order
+  end
 end
