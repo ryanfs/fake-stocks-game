@@ -1,4 +1,10 @@
 class StocksController < ApplicationController
+
+  def index
+    @stocks = Stock.all
+    Stock.update_stock_prices
+  end
+
   def show
   end
 

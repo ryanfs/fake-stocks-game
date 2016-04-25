@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # devise_for :users, :controllers => {:google_callbacks => "callbacks", registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
+
   root 'sessions#new'
 
   get 'login' => 'sessions#new'
@@ -7,9 +10,9 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'example' => 'markets#example'
 
-  resources :users, only: [:new, :create, :show]
+  # resources :users, only: [:new, :create, :show]
   resources :markets, only: [:index]
-  resources :stocks, only: [:show]
+  resources :stocks, only: [:index, :show, :create, :new]
   resources :holdings, only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

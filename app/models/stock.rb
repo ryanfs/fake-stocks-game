@@ -35,6 +35,4 @@ class Stock < ActiveRecord::Base
     end
   end
 
-
-    #https://www.quandl.com/api/v3/datasets/WIKI/mkc.json?api_key=JbeKoETbmEm1GaDYfsD1&limit=2&column_index=1&transform=diff
 end

@@ -6,5 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-stocks = Stock.create([{name: 'google', price: 10}, {name:'amazon' , price: 15 }, {name: 'yahoo', price: 1}, {name: 'buzzfeed', price: 2}])
+stocks = ['goog',
+'fb',
+'tsla',
+'nke',
+'amzn',
+'yhoo']
 
+StockQuote::Stock.quote("goog")
+response_code
+
+stocks.each do |stock|
+  status = Stock.stock_status(stock)
+  if status == 200
+    Stock.add_to_market(stock, Stock.stock_price(stock))
+  else
+    puts stock
+  end
+end
+
+ryan = User.create({username: 'ryan', email: 'rfsalerno@gmail.com', password_digest: 'southpark'})

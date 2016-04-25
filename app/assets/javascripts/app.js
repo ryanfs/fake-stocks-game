@@ -17,4 +17,22 @@ $( document ).ready(function() {
     $('#make_trade_sell').toggle();
   })
 
+
+
+  var showStocks = function() {
+    $.ajax({
+      type: 'GET',
+      url: '/stocks',
+      success: function() {
+        console.log('this worked');
+        $(this).addClass('done');
+      }
+    })
+  }
+
+  $('#show-stocks').on('click', function(event) {
+  event.preventDefault();
+  showStocks();
+  })
+
 });

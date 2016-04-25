@@ -6,7 +6,6 @@ class MarketsController < ApplicationController
     @stocks = Stock.all
     @stock = Stock.new
     @user_holdings = current_user.holdings
-    #Stock.update_stock_prices
   end
 
 

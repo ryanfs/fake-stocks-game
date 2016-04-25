@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328203315) do
+ActiveRecord::Schema.define(version: 20160421231911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "holdings", force: true do |t|
-    t.integer  "quantity"
+    t.integer  "quantity",   default: 1
     t.integer  "user_id"
     t.integer  "stock_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "holdings", ["stock_id"], name: "index_holdings_on_stock_id", using: :btree
@@ -42,23 +42,34 @@ ActiveRecord::Schema.define(version: 20160328203315) do
   end
 
   create_table "stocks", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "price",      null: false
+    t.string   "name",                                null: false
+    t.string   "symbol",                              null: false
+    t.decimal  "price",      precision: 14, scale: 2
     t.integer  "volatility"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   create_table "users", force: true do |t|
-    t.string   "username",                      null: false
-    t.string   "email",                         null: false
-    t.string   "password_digest",               null: false
-    t.integer  "cash",            default: 100
-    t.integer  "stock_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.string   "username",                                                          null: false
+    t.decimal  "cash",                   precision: 999, scale: 2, default: 1000.0
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
+    t.string   "email",                                            default: "",     null: false
+    t.string   "encrypted_password",                               default: "",     null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                                    default: 0,      null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
   end
 
-  add_index "users", ["stock_id"], name: "index_users_on_stock_id", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

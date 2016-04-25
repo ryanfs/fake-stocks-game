@@ -19,6 +19,16 @@ class User < ActiveRecord::Base
   end
 
   def self.leaderboard
-    # look at every user, add up the value of their portfolio + cash holdings, return them in order
+    users = User.all
+    leaderboard = {}
+    users.each do |user|
+      username = user.username
+      portfolio_value = user.cash.to_f
+      user.stocks.each do |stock|
+        portfolio_value += stock.price.to_f
+      end
+      leaderboard = username[portfolio_value]
+    end
+    leaderboard
   end
 end
