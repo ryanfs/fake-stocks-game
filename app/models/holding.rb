@@ -2,8 +2,6 @@ class Holding < ActiveRecord::Base
   belongs_to :user
   belongs_to :stock
 
-
-
   def self.buy_stocks(params, user)
     order_price = self.price_of_order(params)
     if order_price <= user.cash

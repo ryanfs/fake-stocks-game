@@ -1,5 +1,6 @@
+ <h2>Leaderboard</h2>
   <ol>
     <% @leaderboard_users.each do |user| %>
-      <li><%= user.username %>: $<%= user.cash.to_s %></li>
+      <li><%= user[0] %>: $<%= user[1].to_s %></li>
     <% end %>
   </ol>

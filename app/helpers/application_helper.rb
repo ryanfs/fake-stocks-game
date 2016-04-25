@@ -17,7 +17,6 @@ module ApplicationHelper
     else
       'Your portfolio is empty.'
     end
-
   end
 
 
