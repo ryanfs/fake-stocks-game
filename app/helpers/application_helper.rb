@@ -44,4 +44,15 @@ module ApplicationHelper
     end
     stocks_objects
   end
+
+  def stock_name(stock_id)
+    stock = Stock.find(stock_id)
+    stock.name
+  end
+
+  def stock_symbol(stock_id)
+    stock = Stock.find(stock_id)
+    stock.symbol
+  end
+
 end

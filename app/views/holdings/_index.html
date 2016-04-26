@@ -2,7 +2,7 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <div class="panel-heading">
-        Trade History
+        Trade History: <%="#{current_user.holdings.count}" %> trades to date
       </div>
       <tr>
         <th>Date</th>
@@ -10,19 +10,19 @@
         <th>Quantity</th>
         <th>Stock</th>
         <th>Symbol</th>
-        <th>Price</th>
-        <th>Delta</th>
+        <th><span data-toggle="tooltip" title="Price at time of trade" data-placement="top">Price</span></th>
+        <th><span data-toggle="tooltip" title="Difference in price from now and when you made the trade" data-placement="top">Delta</span></th>
       </tr>
     </thead>
     <tbody>
       <% @user_holdings.each do |trade| %>
       <tr>
-        <th><%= trade.created_at %></th>
+        <th><%= trade.created_at.to_formatted_s(:custom_long_ordinal) %></th>
+        <th><%= Holding.buy_or_sell(trade.quantity) %></th>
         <th><%= trade.quantity %></th>
-        <th><%= trade.quantity %></th>
-        <th><%= trade.stock_id %></th>
-        <th><%= trade.stock_id %></th>
-        <th>$115.23</th>
+        <th><%= stock_name(trade.stock_id) %></th>
+        <th><%= stock_symbol(trade.stock_id) %></th>
+        <th>$<%= trade.stock_price %></th>
         <th>+ $5.02</th>
       </tr>
       <% end %>

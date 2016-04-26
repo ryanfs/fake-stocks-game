@@ -1,4 +1,9 @@
 $( document ).ready(function() {
+
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
   $('#buy-header').on('click', function(event) {
     event.preventDefault();
     $('#make_trade_buy').toggle();

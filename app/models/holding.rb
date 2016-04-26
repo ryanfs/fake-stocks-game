@@ -2,6 +2,19 @@ class Holding < ActiveRecord::Base
   belongs_to :user
   belongs_to :stock
 
+# View helper for holdings
+  def self.buy_or_sell(num)
+    if num > 0
+      "Purchase"
+    elsif num < 0
+      "Sale"
+    end
+  end
+
+Time::DATE_FORMATS[:custom_long_ordinal] = "%b %e, %Y @ %l:%M %p"
+
+## end view helper for holdings
+
   def self.buy_stocks(params, user)
     order_price = self.price_of_order(params)
     puts "order_price #{order_price}"
@@ -45,7 +58,7 @@ class Holding < ActiveRecord::Base
     stock_order.each do |stock, quantity|
       (quantity = quantity * -1)
       stock_object = Stock.find_by(symbol: stock)
-      sell = Holding.new(quantity: quantity, user: user, stock: stock_object)
+      sell = Holding.new(quantity: quantity, user: user, stock: stock_object, stock_price: stock_object.price)
       if sell.save
         user.update(cash: user.cash - (stock_object.price * quantity))
       else
@@ -59,7 +72,7 @@ class Holding < ActiveRecord::Base
     stock_order.each do |stock, quantity|
       puts stock
       stock_object = Stock.find_by(symbol: stock)
-      buy = Holding.new(quantity: quantity, user: user, stock: stock_object)
+      buy = Holding.new(quantity: quantity, user: user, stock: stock_object, stock_price: stock_object.price)
       if buy.save
         user.update(cash: user.cash - (stock_object.price * quantity))
       else
