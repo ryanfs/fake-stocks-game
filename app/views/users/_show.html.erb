@@ -47,16 +47,13 @@
         </tr>
       </thead>
       <tbody>
+        <% stocks(current_user).each do |stock| %>
         <tr>
-          <th>Alphabet, Inc.</th>
-          <th>GOOG</th>
-          <th>$115.23</th>
+          <th><%= stock.name %></th>
+          <th><%= stock.symbol %></th>
+          <th>$<%= stock.price %></th>
         </tr>
-        <tr>
-          <th>Disney</th>
-          <th>DIS</th>
-          <th>$15.23</th>
-        </tr>
+        <% end %>
       </tbody>
     </table>
 </div>

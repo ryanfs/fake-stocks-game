@@ -34,4 +34,14 @@ module ApplicationHelper
     value
   end
 
+  def stocks(user)
+    stocks_objects = []
+    if user.stocks
+      user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, _quantity|
+        stock = Stock.find(stock_id)
+        stocks_objects << stock
+      end
+    end
+    stocks_objects
+  end
 end
