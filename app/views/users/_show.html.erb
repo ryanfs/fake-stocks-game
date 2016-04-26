@@ -1,22 +1,27 @@
 <div class="row">
   <div class="container">
-    <h3>Make a trade: <a href="#" id="sell">Sell!</a></h3>
     <%= render partial: "trades/new" %>
   </div>
 </div>
 
 <div class="col-md-3">
   <div class="dashboard-div-wrapper bk-clr-three">
-    <div class="component-header">El Banco</div>
+    <div class="component-header"><i class="material-icons">local_atm</i>
+      <br>
       <h4>$<%= current_user.cash %></h4>
+    </div>
+    <a href="/stockmarket" id='buy-header' class="btn btn-info"><span class="glyphicon glyphicon-certificate"></span>&nbsp;&nbsp;Add stocks to your portfolio</a>
   </div>
 </div>
 
-<div class="col-md-6" id="my-portfolio">
+
+
+<div class="col-md-5" id="my-portfolio">
   <div class="notice-board">
-    <div class="panel panel-default">
-      <div class="panel-heading">Portfolio
+    <div class="panel panel-success">
+      <div class="panel-heading">Portfolio Value: $<%= portfolio_value(current_user) %>
         <div class="pull-right">
+          <a href="#" id="sell" class="btn btn-warning"><span class="glyphicon glyphicon-flash"></span>&nbsp;&nbsp;Sell!</a>
         </div>
       </div>
         <div class="panel-body">
@@ -34,3 +39,32 @@
 
 <%= render partial: "sales/new" %>
 
+<div class="table-responsive panel panel-info">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <div class="panel-heading">
+        Your Stocks
+        <div class="pull-right">
+          <i class="material-icons">rotate_right</i>
+        </div>
+      </div>
+      <tr>
+        <th>Stock</th>
+        <th>Symbol</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Alphabet, Inc.</th>
+        <th>GOOG</th>
+        <th>$115.23</th>
+      </tr>
+      <tr>
+        <th>Disney</th>
+        <th>DIS</th>
+        <th>$15.23</th>
+      </tr>
+    </tbody>
+  </table>
+</div>

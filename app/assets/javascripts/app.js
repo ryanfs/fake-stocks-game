@@ -21,10 +21,12 @@ $( document ).ready(function() {
     event.preventDefault();
     $('#make_trade_sell').toggle();
     $('#my-portfolio').toggle();
-    if ($('#sell').text() == "Sell!")
-       $('#sell').text("Cancel")
-    else
-       $('#sell').text("Sell!");
+  });
+
+  $('#cancel-sale').on('click', function(event) {
+    event.preventDefault();
+    $('#make_trade_sell').toggle();
+    $('#my-portfolio').toggle();
   });
 
 

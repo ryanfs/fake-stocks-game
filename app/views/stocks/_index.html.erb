@@ -1,6 +1,22 @@
-      <h2>Stock Market</h2>
-        <ul>
-          <% @stocks.each do |stock| %>
-            <li>$<%= stock.price %> <%= stock.name %> (<%= stock.symbol %>)</li>
-          <% end %>
-        </ul>
+<div class="table-responsive panel panel-info">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <div class="panel-heading">
+        Stock Market
+        <div class="pull-right">
+          <i class="material-icons">rotate_right</i>
+        </div>
+      </div>
+    </thead>
+    <tbody>
+      <% @stocks.each do |stock| %>
+      <tr>
+        <th><%= stock.name %></th>
+        <th><%= stock.symbol%></th>
+        <th>$<%= stock.price %></th>
+      </tr>
+      <% end %>
+      <tr>
+    </tbody>
+  </table>
+</div>

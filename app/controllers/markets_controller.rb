@@ -5,6 +5,11 @@ class MarketsController < ApplicationController
     @stocks = Stock.all
     @stock = Stock.new
     @user_holdings = current_user.holdings
+  end
+
+  def stockmarket
+    @stock = Stock.new
+    @stocks = Stock.all
     #Stock.update_stock_prices
   end
 

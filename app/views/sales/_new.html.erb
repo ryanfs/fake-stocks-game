@@ -1,9 +1,9 @@
-<!-- refactor this non DRY wet nonsense be like the pokemon example... also refactor this (and holding model) to use stock.id not stock.name -->
-<div class="col-md-6" id="make_trade_sell">
+<div class="col-md-5" id="make_trade_sell">
   <div class="notice-board">
-    <div class="panel panel-default" >
+    <div class="panel panel-success" >
       <div class="panel-heading">Sell some stocks from your Portfolio
         <div class="pull-right">
+          <a href="#" id="cancel-sale">Cancel</a>
         </div>
       </div>
         <div class="panel-body">
@@ -13,13 +13,12 @@
               <% stock = Stock.find(stock_id) %>
               <% if quantity == 0 %>
               <% elsif quantity == 1 %>
-                <li><%= f.number_field stock.symbol, :max => quantity, :min => 0, :placeholder => '0' %><strong><%= stock.name %></strong> <small>You own <%= quantity %> share</small></li>
+                <li><%= f.number_field stock.symbol, :max => quantity, :min => 0, :placeholder => '0' %><strong>&nbsp;<%= stock.name %></strong> <small> You own <%= quantity %> share</small></li>
               <% else %>
-                <li><%= f.number_field stock.symbol, :max => quantity, :min => 0, :placeholder => '0' %><strong><%= stock.name %></strong> <small>You own <%= quantity %> shares</small></li>
+                <li><%= f.number_field stock.symbol, :max => quantity, :min => 0, :placeholder => '0' %><strong>&nbsp;<%= stock.name %></strong> <small> You own <%= quantity %> shares</small></li>
               <% end %>
               <% end %>
-
-              <li><%= f.submit 'Sell stocks' %></li>
+              <%= f.submit 'Sell stocks', class: 'btn btn-success sell-stocks-submit' %>
             <% end %>
           </ul>
         </div>

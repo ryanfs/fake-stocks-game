@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>FakeStocks</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -25,7 +27,7 @@
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-top-active" href="markets">Portfolio</a></li>
                             <li><a href="/leaderboard">Leaderboard</a></li>
-                            <li><a href="table.html">Stock Market</a></li>
+                            <li><a href="/stockmarket">Stock Market</a></li>
                             <li><a href="table.html">Settings</a></li>
                             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
                         </ul>
