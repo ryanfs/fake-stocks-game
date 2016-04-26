@@ -15,8 +15,12 @@ $( document ).ready(function() {
   $('#sell').on('click', function(event) {
     event.preventDefault();
     $('#make_trade_sell').toggle();
-  })
-
+    $('#my-portfolio').toggle();
+    if ($('#sell').text() == "Sell!")
+       $('#sell').text("Cancel")
+    else
+       $('#sell').text("Sell!");
+  });
 
 
   var showStocks = function() {

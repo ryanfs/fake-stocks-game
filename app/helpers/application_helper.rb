@@ -14,8 +14,10 @@ module ApplicationHelper
         stock = Stock.find(stock_id)
         if quantity == 0
           0
+        elsif quantity == 1
+          "#{quantity} share of <strong>#{stock.name}</strong>"
         else
-          "#{quantity} shares of #{stock.name}"
+          "#{quantity} shares of <strong>#{stock.name}</strong>"
         end
       end
     else

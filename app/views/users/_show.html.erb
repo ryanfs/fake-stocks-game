@@ -1,3 +1,10 @@
+<div class="row">
+  <div class="container">
+    <h3>Make a trade: <a href="#" id="sell">Sell!</a></h3>
+    <%= render partial: "trades/new" %>
+  </div>
+</div>
+
 <div class="col-md-3">
   <div class="dashboard-div-wrapper bk-clr-three">
     <div class="component-header">El Banco</div>
@@ -5,11 +12,7 @@
   </div>
 </div>
 
-
-<%= render partial: "trades/new" %>
-<%= render partial: "sales/new" %>
-
-<div class="col-md-7">
+<div class="col-md-6" id="my-portfolio">
   <div class="notice-board">
     <div class="panel panel-default">
       <div class="panel-heading">Portfolio
@@ -30,4 +33,5 @@
     </div>
   </div>
 
+<%= render partial: "sales/new" %>
 

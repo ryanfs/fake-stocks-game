@@ -1,15 +1,28 @@
 <!-- refactor this non DRY wet nonsense be like the pokemon example... also refactor this (and holding model) to use stock.id not stock.name -->
-<a href="#" id="sell">Sell!</a>
-<section id="make_trade_sell">
-  <%= form_for :holdings, :url => {:action => :create, :controller => :holdings, :decision => :sell} do |f| %>
-  <fieldset>
-    <div>
-      <% current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity| %>
-      <% stock = Stock.find(stock_id) %>
+<div class="col-md-6" id="make_trade_sell">
+  <div class="notice-board">
+    <div class="panel panel-default" >
+      <div class="panel-heading">Sell some stocks from your Portfolio
+        <div class="pull-right">
+        </div>
+      </div>
+        <div class="panel-body">
+          <%= form_for :holdings, :url => {:action => :create, :controller => :holdings, :decision => :sell} do |f| %>
+          <ul>
+            <% current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity| %>
+              <% stock = Stock.find(stock_id) %>
+              <% if quantity == 0 %>
+              <% elsif quantity == 1 %>
+                <li><%= f.number_field stock.name, :max => quantity, :min => 0, :placeholder => '0' %><strong><%= stock.name %></strong> <small>You own <%= quantity %> share</small></li>
+              <% else %>
+                <li><%= f.number_field stock.name, :max => quantity, :min => 0, :placeholder => '0' %><strong><%= stock.name %></strong> <small>You own <%= quantity %> shares</small></li>
+              <% end %>
+              <% end %>
 
-        <%= f.number_field stock.name, :max => quantity, :min => 0, :placeholder => 'Quantity' %><%= stock.name %> (You own <%= quantity %> shares) </br />
-      <% end %>
-      <%= f.submit 'Offload these stocks' %>
+              <li><%= f.submit 'Sell stocks' %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
-  <% end %>
-</section>
+  </div>
