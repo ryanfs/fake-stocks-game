@@ -5,6 +5,11 @@ $( document ).ready(function() {
     $('.ion-android-share-alt').toggle();
   });
 
+  $('.leaderboard').on('click', function(event) {
+    event.preventDefault();
+    jQuery(this).next("div").toggle();
+  });
+
   $('.ion-android-share-alt').on('click', function(event) {
     event.preventDefault();
     $('#make_trade_buy').toggle();

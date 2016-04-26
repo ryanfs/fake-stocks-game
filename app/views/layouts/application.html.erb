@@ -23,10 +23,11 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a class="menu-top-active" href="index.html">Portfolio</a></li>
-                            <li><a href="ui.html">Leaderboard</a></li>
+                            <li><a class="menu-top-active" href="markets">Portfolio</a></li>
+                            <li><a href="/leaderboard">Leaderboard</a></li>
                             <li><a href="table.html">Stock Market</a></li>
                             <li><a href="table.html">Settings</a></li>
+                            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
                         </ul>
                     </div>
                 </div>

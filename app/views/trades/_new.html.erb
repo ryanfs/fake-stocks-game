@@ -6,7 +6,7 @@
    <div>
       <% @stocks.each do |stock| %>
         <%= "$#{stock.price} #{stock.name}" %>
-        <%= f.number_field stock.name, :placeholder => 'How many shares?' %></br />
+        <%= f.number_field stock.symbol, :placeholder => 'How many shares?' %></br />
         </br />
       <% end %>
       <%= f.submit 'Place order' %>

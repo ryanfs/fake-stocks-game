@@ -17,12 +17,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">Portfolio
         <div class="pull-right">
-          <i class="glyphicon glyphicon-repeat"></i>
         </div>
       </div>
         <div class="panel-body">
           <ul>
-            <% my_portfolio.each do |item| %>
+            <% portfolio(current_user).each do |item| %>
             <% if item != 0 %>
               <li><%= item.html_safe %></li>
             <% end %>

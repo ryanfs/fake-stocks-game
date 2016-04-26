@@ -13,9 +13,9 @@
               <% stock = Stock.find(stock_id) %>
               <% if quantity == 0 %>
               <% elsif quantity == 1 %>
-                <li><%= f.number_field stock.name, :max => quantity, :min => 0, :placeholder => '0' %><strong><%= stock.name %></strong> <small>You own <%= quantity %> share</small></li>
+                <li><%= f.number_field stock.symbol, :max => quantity, :min => 0, :placeholder => '0' %><strong><%= stock.name %></strong> <small>You own <%= quantity %> share</small></li>
               <% else %>
-                <li><%= f.number_field stock.name, :max => quantity, :min => 0, :placeholder => '0' %><strong><%= stock.name %></strong> <small>You own <%= quantity %> shares</small></li>
+                <li><%= f.number_field stock.symbol, :max => quantity, :min => 0, :placeholder => '0' %><strong><%= stock.name %></strong> <small>You own <%= quantity %> shares</small></li>
               <% end %>
               <% end %>
 

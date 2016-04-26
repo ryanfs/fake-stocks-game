@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :logged_in?
   require 'pry'
+
+  def leaderboard
+    @leaderboard_users = User.leaderboard
+  end
+
   def new
     @user = User.new
     render new_user_path

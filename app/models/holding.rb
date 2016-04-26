@@ -4,8 +4,10 @@ class Holding < ActiveRecord::Base
 
   def self.buy_stocks(params, user)
     order_price = self.price_of_order(params)
+    puts "order_price #{order_price}"
     if order_price <= user.cash
       order = self.get_stocks_from_order(params)
+      puts "order #{order}"
       self.purchase_stocks(order, user, order_price)
     else
       return false
@@ -25,7 +27,7 @@ class Holding < ActiveRecord::Base
   def self.user_cannot_have_negative_quantities_of_stock(user, params)
     order = self.get_stocks_from_order(params)
     order.each do |stock, quantity|
-      stock_id = Stock.find_by(name: stock).id
+      stock_id = Stock.find_by(symbol: stock).id
       if quantity > self.stock_quantity(user, stock_id)
         return false
       end
@@ -42,10 +44,10 @@ class Holding < ActiveRecord::Base
   def self.sell(stock_order, user, price)
     stock_order.each do |stock, quantity|
       (quantity = quantity * -1)
-      stock_object = Stock.find_by(name: stock)
+      stock_object = Stock.find_by(symbol: stock)
       sell = Holding.new(quantity: quantity, user: user, stock: stock_object)
       if sell.save
-        user.update(cash: user.cash + price)
+        user.update(cash: user.cash - (stock_object.price * quantity))
       else
         return false
       end
@@ -53,11 +55,13 @@ class Holding < ActiveRecord::Base
   end
 
   def self.purchase_stocks(stock_order, user, price)
+    puts "stock order: #{stock_order} total price: #{price}"
     stock_order.each do |stock, quantity|
-      stock_object = Stock.find_by(name: stock)
+      puts stock
+      stock_object = Stock.find_by(symbol: stock)
       buy = Holding.new(quantity: quantity, user: user, stock: stock_object)
       if buy.save
-        user.update(cash: user.cash - price)
+        user.update(cash: user.cash - (stock_object.price * quantity))
       else
         return false
       end
@@ -67,8 +71,9 @@ class Holding < ActiveRecord::Base
   def self.price_of_order(params)
     total_price = 0
     params.each do |name, val|
-      total_price += (val.to_i * Stock.find_by(name: name).price)
+      total_price += (val.to_f * Stock.find_by(symbol: name).price)
     end
+    puts "total price: #{total_price}"
     total_price
   end
 
@@ -76,7 +81,7 @@ class Holding < ActiveRecord::Base
   def self.get_stocks_from_order(params)
     stock_order = {}
     params.each do |key, val|
-      val = val.to_i
+      val = val.to_f
       stock_order[key] = val if val > 0
     end
     stock_order

@@ -8,9 +8,9 @@ module ApplicationHelper
     end
   end
 
-  def my_portfolio
-    if my_stocks
-      current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity|
+  def portfolio(user)
+    if user.stocks
+      user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity|
         stock = Stock.find(stock_id)
         if quantity == 0
           0
@@ -20,8 +20,6 @@ module ApplicationHelper
           "#{quantity} shares of <strong>#{stock.name}</strong>"
         end
       end
-    else
-      'Your portfolio is empty.'
     end
   end
 

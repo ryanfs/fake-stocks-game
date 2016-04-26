@@ -17,7 +17,7 @@ class StocksController < ApplicationController
     stock = StockQuote::Stock.quote(name)
     status = stock.response_code
     if status == 200
-      Stock.add_to_market(name, stock.ask)
+      Stock.add_to_market(name)
       redirect_to markets_path
     else
       puts name

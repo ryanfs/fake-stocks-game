@@ -13,6 +13,7 @@ end
 
   get 'example' => 'markets#example'
   resources :markets, only: [:index]
+  get 'leaderboard' => 'users#leaderboard'
   resources :stocks, only: [:index, :show, :create, :new]
   resources :holdings, only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.

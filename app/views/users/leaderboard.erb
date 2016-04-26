@@ -1,0 +1,29 @@
+<div class="content-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="page-head-line">Leaderboard</h4>
+          <ol>
+            <% @leaderboard_users.each do |user| %>
+              <li class="leaderboard" class="left-padding"><a href="#"><%= user[0] %></a>: $<%= user[1].to_s %></li>
+              <div class="col-md-6 leaderboard-portfolio">
+              <div class="notice-board">
+                <div class="panel panel-default">
+                      <ul>
+                        <% portfolio(User.find_by(username: user[0])).each do |item| %>
+                        <% if item != 0 %>
+                          <li><%= item.html_safe %></li>
+                        <% end %>
+                        <% end %>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+

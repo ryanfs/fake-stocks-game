@@ -7,18 +7,9 @@ class Stock < ActiveRecord::Base
   has_many :holdings
   has_and_belongs_to_many :users, through: :holdings
 
-  def self.stock_status(stock)
-    response = HTTParty.get("https://www.quandl.com/api/v3/datasets/WIKI/#{stock}.json?api_key=JbeKoETbmEm1GaDYfsD1&limit=2&column_index=1")
-    response.code
-  end
-
-  def self.stock_price(stock)
-    response = HTTParty.get("https://www.quandl.com/api/v3/datasets/WIKI/#{stock}.json?api_key=JbeKoETbmEm1GaDYfsD1&limit=2&column_index=1")
-    response["dataset"]["data"][0][1]
-  end
-
-  def self.add_to_market(name, price)
-    Stock.create({name: name, symbol: name, price: price})
+  def self.add_to_market(name)
+    stock_object = StockQuote::Stock.quote(name)
+    Stock.find_or_create_by({name: stock_object.name, symbol: stock_object.symbol, price: stock_object.ask})
   end
 
   def self.update_stock_prices
@@ -28,7 +19,7 @@ class Stock < ActiveRecord::Base
       stock_object = StockQuote::Stock.quote(stock.symbol)
       puts stock_object.ask
       if stock_object.response_code == 200
-        stock.update(price: stock_object.ask, name: stock_object.name)
+        stock.update(price: stock_object.ask, name: stock_object.name, symbol: stock_object.symbol)
       else
         puts stock.name
       end

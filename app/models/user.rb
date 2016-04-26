@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     stock_value.each do |stock_price|
       total_value += stock_price
     end
-    total_value.round(2)
+    total_value
   end
 
   def self.leaderboard
@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
     leaderboard = {}
     users.each do |user|
       username = user.username
+      puts "ryan #{portfolio_value(user)}"
       my_portfolio_value = user.cash.to_f
       my_portfolio_value += portfolio_value(user)
       leaderboard[username] = my_portfolio_value.round(2)
