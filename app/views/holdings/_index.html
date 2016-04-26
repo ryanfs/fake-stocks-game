@@ -1,29 +1,31 @@
-<div class="table-responsive panel panel-info">
+<div class="table-responsive panel panel-warning">
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <div class="panel-heading">
-        Your Stocks
-        <div class="pull-right">
-          <i class="material-icons">rotate_right</i>
-        </div>
+        Trade History
       </div>
       <tr>
+        <th>Date</th>
+        <th>Trade</th>
+        <th>Quantity</th>
         <th>Stock</th>
         <th>Symbol</th>
         <th>Price</th>
+        <th>Delta</th>
       </tr>
     </thead>
     <tbody>
+      <% @user_holdings.each do |trade| %>
       <tr>
-        <th>Alphabet, Inc.</th>
-        <th>GOOG</th>
+        <th><%= trade.created_at %></th>
+        <th><%= trade.quantity %></th>
+        <th><%= trade.quantity %></th>
+        <th><%= trade.stock_id %></th>
+        <th><%= trade.stock_id %></th>
         <th>$115.23</th>
+        <th>+ $5.02</th>
       </tr>
-      <tr>
-        <th>Disney</th>
-        <th>DIS</th>
-        <th>$15.23</th>
-      </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

@@ -4,7 +4,7 @@ class MarketsController < ApplicationController
     @users = User.all
     @stocks = Stock.all
     @stock = Stock.new
-    @user_holdings = current_user.holdings
+    @user_holdings = current_user.holdings.reverse
   end
 
   def stockmarket
