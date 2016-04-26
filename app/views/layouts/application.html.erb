@@ -14,11 +14,20 @@
       <div class="container title">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-        Real Stocks Fake Money
-      </div>
       <% if user_signed_in? %>
+      <img src="http://ryanfsalerno.com/imgs/ryan.jpg" class="headshot">
+       <%= current_user.username %>'s real stocks / fake money
+        <div class="pull-right">
+        Cash <span class="label label-success">$<%= current_user.cash %></span>&nbsp; &nbsp; &nbsp; Net worth <span class="label label-info">$<%= current_user.cash + portfolio_value(current_user) %>
+
+      </div>
+      </div>
+
+
+
 
     </div>
+
       <section class="menu-section">
         <div class="container">
             <div class="row">

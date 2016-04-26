@@ -31,7 +31,7 @@ module ApplicationHelper
       worth = stock.price * quantity
       value += worth
     end
-    "#{value}"
+    value
   end
 
 end

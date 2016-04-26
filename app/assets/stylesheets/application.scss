@@ -15,10 +15,20 @@ body {
     background-color: #C36464;
     border-color: transparent;
     border-radius: 0px;
-    min-height: 100px;
+    min-height: 120px;
     position: relative;
     color: ivory;
     font-size: 30px;
+}
+
+.headshot {
+    border-radius: 50%;
+    border: 2px solid ivory;
+    width: 75px;
+}
+
+.title {
+    line-height: 100px;
 }
 
 /*@import url(http://fonts.googleapis.com/css?family=Roboto); /* FREE GOOGLE FONT */
@@ -66,7 +76,6 @@ li.leaderboard {
     border-bottom: 2px solid ivory;
     margin-bottom: 30px;
     font-size: 20px;
-    color: ivory;
 }
 
 .page-head-line {
@@ -77,6 +86,10 @@ li.leaderboard {
     color: #F0677C;
     font-size: 20px;
     margin-bottom: 40px;
+}
+
+.portfolio-info {
+    color: #666;
 }
 
 .btn {
