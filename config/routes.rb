@@ -3,14 +3,15 @@ Rails.application.routes.draw do
   # devise_for :users, :controllers => {:google_callbacks => "callbacks", registrations: 'registrations' }
   devise_for :users, :controllers => { registrations: 'users/registrations' }
 
-  root 'sessions#new'
+  authenticated :user do
+    root 'markets#index', as: :authenticated_root
+  end
 
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+as :user do
+  root "devise/sessions#new"
+end
+
   get 'example' => 'markets#example'
-
-  # resources :users, only: [:new, :create, :show]
   resources :markets, only: [:index]
   resources :stocks, only: [:index, :show, :create, :new]
   resources :holdings, only: [:new, :create]

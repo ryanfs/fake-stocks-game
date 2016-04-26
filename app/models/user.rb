@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:google]
   # has_secure_password
   validates :email, :username, presence: true
+  validates :username, uniqueness: true
   has_many :holdings
   has_many :stocks, through: :holdings
 
@@ -39,7 +40,6 @@ class User < ActiveRecord::Base
       my_portfolio_value += portfolio_value(user)
       leaderboard[username] = my_portfolio_value.round(2)
     end
-    #leaderboard
     leaderboard.sort_by {|_key, value| value}.reverse
   end
 end

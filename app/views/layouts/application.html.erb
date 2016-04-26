@@ -9,28 +9,16 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<% if current_user %>
-<!--<nav>
-  <ul>
-    <li><a class="brick dashboard" href="/"><span class='icon ion-home'></span>Dashboard</a></li>
-  <li><a class="brick navigation" id="buy" href="#"><span class='icon ion-android-share-alt'></span>#</a>
-    </li>
-    <li><a class="brick pages" href="#"><span class='icon ion-document'></span>SELL SELL SELL</a></li>
-    <li><a class="brick users" href="#"><span class='icon ion-person'></span><%= current_user.email %></a></li>
-    <li><a class="brick settings" data-method="delete" href="/logout"><span class='icon ion-gear-a'></span>Log out</a></li>
-  </ul>
-</nav>-->
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  </li>
 <% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>
+  </li>
 <% end %>
-<!-- <nav>
-  <ul>
-    <% if current_user %>
-    <% else %>
-    <li>You are logged out.</li>
 
-    <% end %>
-  </ul>
-</nav> -->
   <div id="content" class="pages">
     <%= yield %>
   </div>
