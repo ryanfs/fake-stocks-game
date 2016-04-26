@@ -7,19 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>
-  </li>
-<% end %>
-
   <div id="content" class="pages">
+    <div class="navbar">
+      <div class="container title">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+        Real Stocks Fake Money
+      </div>
+      <% if user_signed_in? %>
+
+    </div>
+      <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a class="menu-top-active" href="index.html">Portfolio</a></li>
+                            <li><a href="ui.html">Leaderboard</a></li>
+                            <li><a href="table.html">Settings</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+      <% end %>
+
     <%= yield %>
   </div>
 </body>

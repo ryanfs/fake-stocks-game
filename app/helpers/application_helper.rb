@@ -12,7 +12,11 @@ module ApplicationHelper
     if my_stocks
       current_user.holdings.group(:stock_id).sum(:quantity).map do |stock_id, quantity|
         stock = Stock.find(stock_id)
-        "#{quantity} shares of #{stock.name}"
+        if quantity == 0
+          0
+        else
+          "#{quantity} shares of #{stock.name}"
+        end
       end
     else
       'Your portfolio is empty.'

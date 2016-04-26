@@ -1,13 +1,33 @@
-<h2>My Cash</h2>
-  <p>$<%= current_user.cash %></p>
-
-<h2>My Portfolio</h2>
-  <ul>
-  <% my_portfolio.each do |item| %>
-    <li><%= item.html_safe %></li>
-  <% end %>
-  </ul>
+<div class="col-md-3">
+  <div class="dashboard-div-wrapper bk-clr-three">
+    <div class="component-header">El Banco</div>
+      <h4>$<%= current_user.cash %></h4>
+  </div>
+</div>
 
 
 <%= render partial: "trades/new" %>
 <%= render partial: "sales/new" %>
+
+<div class="col-md-7">
+  <div class="notice-board">
+    <div class="panel panel-default">
+      <div class="panel-heading">Portfolio
+        <div class="pull-right">
+          <i class="glyphicon glyphicon-repeat"></i>
+        </div>
+      </div>
+        <div class="panel-body">
+          <ul>
+            <% my_portfolio.each do |item| %>
+            <% if item != 0 %>
+              <li><%= item.html_safe %></li>
+            <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
