@@ -10,8 +10,8 @@
         <th>Quantity</th>
         <th>Stock</th>
         <th>Symbol</th>
-        <th><span data-toggle="tooltip" title="Price at time of trade" data-placement="top">Price</span></th>
-        <th><span data-toggle="tooltip" title="Difference in price from now and when you made the trade" data-placement="top">Profit/Loss</span></th>
+        <th><span data-toggle="tooltip" title="Price at time of trade" data-placement="top">Trade Price</span></th>
+        <th><span data-toggle="tooltip" title="Difference in price from now and when you made the trade" data-placement="top">Gain/Loss</span></th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
         <th><%= stock_name(trade.stock_id) %></th>
         <th><%= stock_symbol(trade.stock_id) %></th>
         <th>$<%= trade.stock_price %></th>
-        <th>+ $5.02</th>
+        <th><%= Holding.gain_loss(trade) %></th>
       </tr>
       <% end %>
     </tbody>

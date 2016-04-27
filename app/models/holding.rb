@@ -13,6 +13,16 @@ class Holding < ActiveRecord::Base
 
 Time::DATE_FORMATS[:custom_long_ordinal] = "%b %e, %Y @ %l:%M %p"
 
+  def self.gain_loss(trade)
+    if trade.quantity > 0
+      "N/A"
+    elsif trade.stock_price
+      trade.stock_price - Stock.find_by(symbol: stock_symbol(trade.stock_id)).price
+    else
+      "N/A"
+    end
+  end
+
 ## end view helper for holdings
 
   def self.buy_stocks(params, user)
@@ -98,6 +108,11 @@ Time::DATE_FORMATS[:custom_long_ordinal] = "%b %e, %Y @ %l:%M %p"
       stock_order[key] = val if val > 0
     end
     stock_order
+  end
+
+  def self.stock_symbol(stock_id)
+    stock = Stock.find(stock_id)
+    stock.symbol
   end
 
 end
