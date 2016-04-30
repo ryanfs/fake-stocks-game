@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>FakeStocks</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -24,7 +22,7 @@
                          Cash <span class="label label-success">$<%= current_user.cash %></span>&nbsp; &nbsp; Portfolio <span class="label label-warning">$<%= portfolio_value(current_user) %></span>&nbsp; &nbsp; Net worth <span class="label label-info">$<%= current_user.cash + portfolio_value(current_user) %>
                       </div>
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a class="menu-top-active" href="markets"><span class="glyphicon glyphicon-grain"></span> Portfolio</a></li>
+                            <li><a class="menu-top-active" href="/"><span class="glyphicon glyphicon-grain"></span> Portfolio</a></li>
                             <li><a href="/leaderboard"><span class="glyphicon glyphicon-oil"></span> Leaderboard</a></li>
                             <li><a href="/stockmarket"><span class="glyphicon glyphicon-globe"></span> Stock Market</a></li>
                             <li><a href="table.html"><span class="glyphicon glyphicon-object-align-vertical"></span> <%= current_user.username %></a>
@@ -36,7 +34,7 @@
     </section>
 
       <% end %>
-     <p class="notice"><%= notice %></p>
+
       <p class="alert"><%= alert %></p>
     <%= yield %>
 

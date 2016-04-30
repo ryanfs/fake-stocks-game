@@ -21,7 +21,7 @@ gem 'httparty'
 gem 'stock_quote'
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2'
 #gem 'firebase_token_generator'
 
 #gem 'turbolinks'
@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -51,3 +52,5 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
 end
+
+ruby "2.2.1"
