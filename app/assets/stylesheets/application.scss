@@ -12,7 +12,7 @@ body {
 
 .navbar {
     margin-bottom: 0px;
-    background-color: #C36464;
+    background-color: #eee;
     border-color: transparent;
     border-radius: 0px;
     min-height: 120px;
@@ -201,11 +201,12 @@ header {
 /* MENU LINKS SECTION*/
 
 .menu-section {
-    background-color: #3D3D3D;
+    background-color: #DAE9E0;
+    padding-top: 10px;
 }
 
 #menu-top a {
-    color: #FFF;
+    color: #666;
     text-decoration: none;
     font-weight: 500;
     padding: 10px 10px 10px 10px;
@@ -213,15 +214,17 @@ header {
 }
 
 .menu-top-active {
-    background-color: #C36464;
+    background-color: #fff;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .menu-section .nav > li > a:hover,.menu-section .nav > li > a:focus {
-    background-color: #F0677C!important;
+    background-color: #fff!important;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .menu-section .dropdown-menu > li > a:hover,.menu-section .dropdown-menu > li > a:focus {
-    background-color: #F0677C!important;
+    background-color: #fff!important;
 }
 
 .navbar-inverse {

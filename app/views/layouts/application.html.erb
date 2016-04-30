@@ -10,43 +10,36 @@
 </head>
 <body>
   <div id="content" class="pages">
-    <div class="navbar">
-      <div class="container title">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
       <% if user_signed_in? %>
-      <img src="http://ryanfsalerno.com/imgs/ryan.jpg" class="headshot">
-       <%= current_user.username %>
-        <div class="pull-right">
-        Cash <span class="label label-success">$<%= current_user.cash %></span>&nbsp; &nbsp; Portfolio <span class="label label-warning">$<%= portfolio_value(current_user) %></span>&nbsp; &nbsp; Net worth <span class="label label-info">$<%= current_user.cash + portfolio_value(current_user) %>
-      </div>
-      </div>
-
-
-
-
-    </div>
-
       <section class="menu-section">
         <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <img src="https://www.sanbornmediafactory.com/wp-content/uploads/2013/08/ryan2.gif" class="headshot">
+            </div>
+          </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="navbar-collapse collapse ">
+                      <div class="nav navbar-nav navbar-left">
+                         Cash <span class="label label-success">$<%= current_user.cash %></span>&nbsp; &nbsp; Portfolio <span class="label label-warning">$<%= portfolio_value(current_user) %></span>&nbsp; &nbsp; Net worth <span class="label label-info">$<%= current_user.cash + portfolio_value(current_user) %>
+                      </div>
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a class="menu-top-active" href="markets">Portfolio</a></li>
-                            <li><a href="/leaderboard">Leaderboard</a></li>
-                            <li><a href="/stockmarket">Stock Market</a></li>
-                            <li><a href="table.html">Settings</a></li>
+                            <li><a class="menu-top-active" href="markets"><span class="glyphicon glyphicon-grain"></span> Portfolio</a></li>
+                            <li><a href="/leaderboard"><span class="glyphicon glyphicon-oil"></span> Leaderboard</a></li>
+                            <li><a href="/stockmarket"><span class="glyphicon glyphicon-globe"></span> Stock Market</a></li>
+                            <li><a href="table.html"><span class="glyphicon glyphicon-object-align-vertical"></span> <%= current_user.username %></a>
                             <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
                         </ul>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
-      <% end %>
 
+      <% end %>
+     <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     <%= yield %>
+
   </div>
 </body>
 </html>
