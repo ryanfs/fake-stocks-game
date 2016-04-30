@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :logged_in?
-  require 'pry'
 
   def leaderboard
     @leaderboard_users = User.leaderboard
