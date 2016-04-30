@@ -244,7 +244,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
 require 'omniauth-google-oauth2'
-  config.omniauth :google_oauth2, "335002712731-i5mfihfmo9cdlo0b6vt0mc5auskr93ta.apps.googleusercontent.com", "WpI73jZgGRgDOuIRV2vxcYY_", {access_type: "offline", approval_prompt: ""}, {:client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}}
+  config.omniauth :google_oauth2, "335002712731-i5mfihfmo9cdlo0b6vt0mc5auskr93ta.apps.googleusercontent.com", "WpI73jZgGRgDOuIRV2vxcYY_"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
