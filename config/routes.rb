@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
   # devise_for :users, :controllers => {:google_callbacks => "callbacks", registrations: 'registrations' }
-  # devise_for :users, :controllers => { registrations: 'users/registrations' }
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", registrations: 'users/registrations' }
 
   authenticated :user do
     root 'markets#index', as: :authenticated_root
